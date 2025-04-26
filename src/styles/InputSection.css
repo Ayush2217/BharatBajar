@@ -1,0 +1,46 @@
+/* InputSection.css */
+
+.unified-input-container {
+    display: flex;
+    align-items: center;
+    padding: 10px 10px; /* Adjust padding for a cleaner look */
+    background-color: #ffffff;
+    border-radius: 25px; /* Rounded edges similar to ChatGPT's input */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto; /* Center the container */
+	margin-top: 20px; /* Center the container */
+    gap: 15px; /* Add space between icons and input field */
+    border: 1px solid #ddd; /* Subtle border to give definition */
+}
+
+.input-field {
+    flex: 1;
+    border: none; /* Remove border for a unified look */
+    outline: none; /* Remove focus outline */
+    font-size: 16px;
+    height: 40px;
+	margin-top: 20px; /* Center the container */
+    background: transparent; /* No background to make it appear seamless */
+    color: #333; /* Ensure text contrast */
+    padding: 0; /* Remove padding to avoid box-like appearance */
+}
+
+.media-picker-icon,
+.send-icon {
+    color: #007b8a;
+    cursor: pointer;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.media-picker-icon:hover,
+.send-icon:hover {
+    color: #005f67; /* Change color on hover for better visual feedback */
+}
+
+.gpt-answer-section {
+    margin-top: 15px; /* Space between input area and answer */
+    text-align: left;
+}

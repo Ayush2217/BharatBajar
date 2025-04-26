@@ -1,0 +1,19 @@
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.button-group__button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007b8a;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-group__button:hover {
+    background-color: #005f6b;
+}

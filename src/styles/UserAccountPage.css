@@ -1,0 +1,22 @@
+.user-account-page {
+    padding: 20px;
+}
+
+.user-account-page h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.order-history {
+    margin-top: 20px;
+}
+
+.order-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.order-item p {
+    margin: 5px 0;
+    font-size: 16px;
+}

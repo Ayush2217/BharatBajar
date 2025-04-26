@@ -1,0 +1,47 @@
+.StyledHomePage {
+    padding: 20px;
+    text-align: center;
+    background-color: #fff; /* Assuming a white background for clean look */
+    color: #333; /* Dark text for readability */
+}
+
+.clickable-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.option-link {
+    text-decoration: none;
+}
+
+.option {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    width: 120px;
+    text-decoration: none;
+    color: #000;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.option img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.option-title {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.option:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

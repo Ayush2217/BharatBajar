@@ -1,0 +1,62 @@
+/* General styling for the sales header */
+.sales-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, #ffe8b3, #ffc97d, #ffb347);
+	/* Subtle gradient for modern aesthetics */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    border-radius: 12px; /* More rounded corners for a softer look */
+    overflow: hidden;
+    padding: 5px;
+	margin-top: 60px;
+}
+
+/* Style for each tile */
+.header-tile {
+    flex: 1;
+    text-align: center;
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+    color: #007b8a;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px; /* Adds subtle rounding to tiles */
+    margin: 5px; /* Adds space between tiles */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Active state styling */
+.header-tile.active {
+    background-color: #007b8a;
+    color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px); /* Slight lift for active state */
+}
+
+/* Hover effects */
+.header-tile:hover {
+    background-color: #e6f4f8;
+    color: #005f6b;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px); /* Adds a slight lift on hover */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .sales-header {
+        flex-direction: column; /* Stack tiles vertically on small screens */
+        gap: 10px; /* Adds space between stacked tiles */
+    }
+
+    .header-tile {
+        margin: 0; /* Remove extra spacing for stacked tiles */
+        width: 100%; /* Full width for small screens */
+    }
+}

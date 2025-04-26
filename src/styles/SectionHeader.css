@@ -1,0 +1,15 @@
+.section-header {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.section-header__title {
+    font-size: 2rem;
+    color: #007b8a;
+    margin-bottom: 5px;
+}
+
+.section-header__subtitle {
+    font-size: 1rem;
+    color: #555;
+}

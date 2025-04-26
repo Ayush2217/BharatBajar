@@ -1,0 +1,205 @@
+/* MainHomePage.css */
+
+
+body, .main-homepage {
+    overflow-x: hidden;
+}
+
+.main-homepage {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #fff9eb;
+	/* Updated lighter background for consistency */
+}
+
+/* Hero Section */
+.hero-section {
+    background: radial-gradient(circle, #f4ffcf, #b2f5ff, #a3e4ff); /* Creates a radial gradient effect from the center */
+    padding: 60px 20px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+	max-width: 100vw;
+    color: #1a3e59; /* Dark contrasting color for better readability */
+}
+
+/* Hero Buttons */
+.hero-buttons a {
+    background-color: #FFFFFF;
+    color: #3a86ff; /* Use one of the gradient colors for text color */
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: 1px solid #3a86ff; /* Adding border for better consistency */
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.hero-buttons a:hover {
+    background-color: #3a86ff; /* Same color as text color for the hover effect */
+    color: #FFFFFF; /* Make text white on hover for contrast */
+    transform: translateY(-5px);
+}
+
+
+/* Hero Content */
+.hero-content h1 {
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.hero-content p {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.hero-buttons {
+    margin-top: 20px;
+}
+
+/* CTA Button */
+.cta-button {
+    background-color: #1a3e59; /* Darker color for better readability */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    text-decoration: none;
+}
+
+.cta-button.secondary {
+    background-color: #FFFFFF;  /* Darker color for consistency */
+    color: #3a86ff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #155cb0;
+    transform: translateY(-5px);
+}
+
+/* Product Carousel */
+.product-carousel {
+    margin: 50px 0;
+    text-align: center;
+}
+
+.product-carousel h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #1ea8ba; /* Updated to match the other headers */
+}
+
+.carousel-container {
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+}
+
+.carousel-item {
+    flex: 0 0 auto;
+    width: 200px;
+    height: 300px;
+    background-color: #fff;
+    margin: 0 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.carousel-item:hover {
+    transform: scale(1.05);
+}
+
+/* Community Content */
+.community-content {
+    margin: 50px 0;
+    text-align: center;
+}
+
+.community-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #1ea8ba; /* Updated to match the overall header style */
+}
+
+/* Content Grid Styles */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.content-tile {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Sustainability Section */
+.sustainability {
+    background-color: #f1faf0; /* Updated for consistency */
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.sustainability h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #1a3e59; /* Dark color for better readability */
+}
+
+.sustainability p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+/* Testimonials Section */
+.testimonials {
+    margin: 50px 0;
+    text-align: center;
+}
+
+.testimonials h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #1ea8ba; /* Consistent color for headings */
+}
+
+/* Testimonial Carousel */
+.testimonial-carousel {
+    display: flex;
+    justify-content: center;
+}
+
+.testimonial-item {
+    background-color: #fff;
+    padding: 20px;
+    margin: 0 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 0 0 200px;
+    text-align: center;
+    font-size: 1em;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.testimonial-item:hover {
+    transform: scale(1.05);
+}

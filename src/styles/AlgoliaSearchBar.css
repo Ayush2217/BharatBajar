@@ -1,0 +1,96 @@
+/* Container for the search bar */
+.search-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+/* Searchbox input styling */
+.searchbox {
+  width: 50%;
+  max-width: 600px;
+}
+
+.search-input {
+  width: 200%;
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-input:focus {
+  border-color: #4caf50;
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+  outline: none;
+}
+
+/* Search submit button styling */
+.search-submit {
+  display: none;
+}
+
+/* Search dropdown for displaying suggestions */
+.search-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  width: 100%;
+  max-width: 600px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Individual search suggestion */
+.search-suggestion {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.search-suggestion:hover {
+  background: #f9f9f9;
+}
+
+.search-suggestion img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-right: 15px;
+}
+
+.suggestion-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.suggestion-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 2px;
+  color: #333;
+}
+
+.suggestion-brand {
+  font-size: 12px;
+  color: #666;
+}
+
+/* No results message */
+.no-results {
+  padding: 12px;
+  color: #999;
+  text-align: center;
+}

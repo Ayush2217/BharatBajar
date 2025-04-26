@@ -1,0 +1,73 @@
+.gpt-header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100; /* High z-index to ensure the header stays above all other content */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: radial-gradient(circle, #007b8a, #007b8a);
+    padding: 10px 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* New Flex Container to Ensure Title Centering */
+.gpt-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Page Title Styling - Ensure It's Centered */
+.page-title {
+    color: white;
+    font-size: 2rem; /* Increased to make the title stand out more */
+    font-weight: bold;
+    margin: 0 auto; /* Ensures the title remains in the center of the header */
+    position: absolute; /* Position the title independently */
+    left: 50%;
+    transform: translateX(-50%); /* Center the title */
+    text-align: center;
+}
+
+/* Navigation Links Styling */
+.gpt-nav-left,
+.gpt-nav-right {
+    display: flex;
+    gap: 20px;
+}
+
+/* Consistent Font Styling for Links */
+.gpt-nav-left a,
+.gpt-nav-right a {
+    color: white;
+    font-size: 1rem; /* Ensures a consistent font size across all link texts */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.gpt-nav-left a:hover,
+.gpt-nav-right a:hover {
+    color: #cfe0e3; /* Adds a hover effect for better user experience */
+}
+
+/* Button Styling */
+.gpt-button {
+    background-color: #007b8a;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    font-size: 1rem; /* Ensures button text matches the link font size */
+}
+
+.gpt-button:hover {
+    background-color: #005f6b;
+}

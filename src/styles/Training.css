@@ -1,0 +1,128 @@
+/* TrainingPage.css */
+
+.training-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.training-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f4f4f4;
+    padding: 10px 20px;
+}
+
+.training-logo img {
+    height: 50px;
+}
+
+.training-nav {
+    display: flex;
+    gap: 10px;
+}
+
+.training-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+
+.training-container {
+    display: flex;
+    flex: 1;
+}
+
+.training-sidebar {
+    width: 200px;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.training-section h3 {
+    margin-top: 0;
+}
+
+.training-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.training-section li {
+    margin: 10px 0;
+}
+
+.training-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.training-main-header {
+    text-align: center;
+}
+
+.training-content {
+    flex-grow: 1;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.training-input-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.training-input {
+    width: 70%;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.training-send-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.training-answer-section {
+    padding: 20px;
+    text-align: center;
+}
+
+.training-answer {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.training-footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-top: 1px solid #ccc;
+}
+
+.training-ads {
+    width: 150px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    text-align: center;
+}

@@ -1,0 +1,76 @@
+/* Main container for filters */
+.product-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #f9fafc;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    gap: 15px; /* Space between filter groups */
+}
+
+/* Grouping individual filters */
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px; /* Space between label and input/select */
+    flex: 1; /* Equal space for all groups */
+    min-width: 150px; /* Minimum width for better alignment */
+}
+
+/* Labels */
+.filter-group label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 3px; /* Additional spacing below label */
+}
+
+/* Input and Select styles */
+.filter-group input[type="number"],
+.filter-group select {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%; /* Full width for consistency */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+/* Adjust spacing for price range inputs */
+.filter-group input[type="number"] {
+    max-width: 100px; /* Reasonable size for price inputs */
+    display: inline-block;
+}
+
+/* Add hover and focus effects */
+.filter-group input:hover,
+.filter-group select:hover,
+.filter-group input:focus,
+.filter-group select:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); /* Subtle glow effect */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .product-filters {
+        flex-direction: column; /* Stack filters vertically */
+        align-items: stretch; /* Full width for each filter group */
+        gap: 15px; /* Spacing between stacked filter groups */
+    }
+
+    .filter-group {
+        width: 100%; /* Ensure full width on smaller screens */
+    }
+
+    .filter-group input[type="number"],
+    .filter-group select {
+        width: 100%; /* Full width for inputs and selects */
+    }
+}

@@ -1,0 +1,104 @@
+.gpt-chat-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.gpt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+
+.gpt-logo img {
+    height: 50px;
+}
+
+.gpt-nav {
+    display: flex;
+}
+
+.gpt-button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.gpt-chat-container {
+    display: flex;
+    flex: 1;
+}
+
+.gpt-sidebar {
+    width: 200px;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.gpt-section h3 {
+    margin-bottom: 10px;
+}
+
+.gpt-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.gpt-section li {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.gpt-main-chat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.gpt-chat-header {
+    margin-bottom: 10px;
+}
+
+.gpt-chat-box {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    border: 1px solid #ccc;
+}
+
+.gpt-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.gpt-message {
+    margin-bottom: 10px;
+}
+
+.gpt-input-container {
+    display: flex;
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+
+.gpt-input-container input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+.gpt-send-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}

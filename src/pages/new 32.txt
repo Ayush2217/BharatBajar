@@ -1,0 +1,25 @@
+# Configure Git (if not already configured)
+git config --global user.name "JARVS2210"
+git config --global user.email "avs100922@gmail.com"
+
+# Clone the repository
+git clone https://github.com/JARVS2210/WEBDEV.git
+cd WEBDEV
+
+# Copy your directories into the repository using Command Prompt
+xcopy /E /I "C:\Users\ag965\Desktop\Main_Project\device-mantra-frontend" "device-mantra-frontend"
+xcopy /E /I "C:\Users\ag965\Desktop\Main_Project\BACKENDDJANGO" "BACKENDDJANGO"
+
+# Or using PowerShell
+Copy-Item -Recurse "C:\Users\ag965\Desktop\Main_Project\device-mantra-frontend" -Destination "device-mantra-frontend"
+Copy-Item -Recurse "C:\Users\ag965\Desktop\Main_Project\BACKENDDJANGO" -Destination "BACKENDDJANGO"
+
+# Add the new files to the staging area
+git add device-mantra-frontend BACKENDDJANGO
+
+# Commit the changes
+git commit -m "Add device-mantra-frontend and BACKENDDJANGO directories"
+
+# Push the changes to the remote repository using your personal access token
+git push https://JARVS:JAVS_TOKEN@github.com/JARVS2210/WEBDEV.git
+git clone https://JARVS2210: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@github.com/JARVS2210/WEBDEV.git

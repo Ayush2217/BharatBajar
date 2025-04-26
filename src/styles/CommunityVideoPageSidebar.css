@@ -1,0 +1,54 @@
+/* CommunityVideosPageSidebar.css */
+
+.sidebar {
+  width: 250px;
+  background-color: #181818;
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+  position: fixed;
+}
+
+.sidebar.collapsed {
+  width: 80px;
+}
+
+.sidebar-toggle {
+  position: absolute;
+  top: 20px;
+  left: 20px; /* Ensures it stays on the left */
+  cursor: pointer;
+  font-size: 24px;
+  color: white;
+}
+
+.menu-items {
+  list-style: none;
+  padding: 80px 20px 0 20px;
+}
+
+.menu-items li {
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+.sidebar.collapsed .menu-items li {
+  justify-content: center;
+  font-size: 14px;
+  text-align: center;
+}
+
+.menu-items li::before {
+  content: '●';
+  display: inline-block;
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.sidebar.collapsed .menu-items li::before {
+  display: none;
+}

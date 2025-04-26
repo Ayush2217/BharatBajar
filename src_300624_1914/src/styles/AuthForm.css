@@ -1,0 +1,82 @@
+/* Container for the entire form */
+.auth-container {
+    width: 300px; /* Set a fixed width to control form size */
+    margin: 50px auto; /* Centered with more vertical space */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Stronger shadow for better depth */
+    border-radius: 8px; /* Rounded corners */
+    background: #ffffff; /* White background for better contrast */
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align items for better control */
+    justify-content: center; /* Center vertically */
+}
+
+/* Style for each input and label group */
+.form-group {
+    display: flex;
+    flex-direction: column; /* Stack label and input vertically */
+    align-items: stretch; /* Align items to stretch to the full width */
+    width: 100%; /* Ensure the form group takes full width */
+}
+
+/* Uniform style for labels */
+label {
+    margin-bottom: 5px; /* Space between label and input */
+    font-weight: bold; /* Make label text bold */
+}
+
+/* Styling for input fields */
+input {
+    padding: 12px; /* Adequate padding for touch target size */
+    margin-bottom: 10px; /* Consistent margin below inputs */
+    border: 1px solid #ccc; /* Subtle border */
+    border-radius: 4px; /* Matched border radius */
+    width: 100%; /* Ensure full width */
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+/* Specific styles for login form */
+.login-form .form-group {
+    margin-bottom: 20px; /* More space as fewer inputs */
+}
+
+/* Specific styles for signup form */
+.signup-form .form-group {
+    margin-bottom: 15px; /* Standard spacing */
+}
+
+/* Additional styles if needed based on the modal behavior and screen size */
+@media (min-width: 768px) {
+    .auth-container {
+        width: 400px; /* Adjust width for larger screens if necessary */
+    }
+}
+
+/* Styling for buttons */
+.button, .toggle-button {
+    width: 100%; /* Full width for consistency */
+    padding: 10px; /* Adequate padding */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Matched border radius */
+    cursor: pointer; /* Pointer cursor for buttons */
+    text-align: center; /* Center text */
+    margin-top: 10px; /* Margin on top for spacing */
+}
+
+.button {
+    background-color: #4CAF50; /* Primary button color */
+    color: white; /* White text color */
+}
+
+.button:hover {
+    background-color: #45a049; /* Darker shade on hover */
+}
+
+.toggle-button {
+    background-color: transparent; /* Transparent background */
+    color: #007BFF; /* Link color */
+    text-decoration: underline; /* Underline for emphasis */
+    margin-top: 20px; /* More space on top */
+}

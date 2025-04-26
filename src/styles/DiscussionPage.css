@@ -1,0 +1,63 @@
+.discussion-page {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.discussion-page h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.messages-container {
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.message {
+  margin: 10px 0;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.your-message {
+  background-color: #e1ffdd;
+  align-self: flex-end;
+}
+
+.other-message {
+  background-color: #ddd;
+}
+
+.message-input {
+  display: flex;
+  margin-top: 10px;
+}
+
+.message-input input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 4px 0 0 4px;
+  border: 1px solid #ddd;
+}
+
+.message-input button {
+  padding: 10px 15px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 0 4px 4px 0;
+}
+
+.message-input button:hover {
+  background-color: #45a049;
+}

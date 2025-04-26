@@ -1,0 +1,259 @@
+/* General Header Styles */
+.header {
+    display: flex;
+    align-items: center;
+    padding: 10px 10px;
+    background-color: #000; /* Background color */
+    z-index: 1000; /* High z-index so the header stays on top */
+    color: white;
+    position: fixed; /* Fix the header at the top */
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px; /* Reduced height for a more compact header */
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+
+
+/* Logo and Location Container */
+.header-left {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.header-logo {
+  width: 40px; /* Adjust size as needed */
+  height: 40px;
+  border-radius: 50%; /* Makes it circular */
+  object-fit: cover;  /* Ensures image fits inside the circle */
+  background-color: black; /* Optional: add background to make it pop */
+  padding: 0px; /* Optional: spacing inside the circle */
+  margin-right: 10px;
+}
+
+.location-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.location-icon {
+    margin-right: 5px;
+}
+
+.location-label {
+    font-size: 12px;
+    color: #e0e0e0;
+}
+
+.location-value {
+    font-size: 16px;
+    font-weight: bold;
+    color: #e0e0e0;
+}
+
+.dropdown-icon {
+    margin-left: 5px;
+}
+
+.location-dropdown {
+    position: absolute;
+    top: 35px;
+    left: 0;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 250px; /* Increased width to ensure the dropdown covers all content */
+    z-index: 2;
+}
+
+.location-input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 0px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.location-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.location-list li {
+    padding: 8px 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.location-list li:hover {
+    background-color: #e0e0e0;
+}
+/* Search Bar */
+.search-form {
+    display: flex;
+    justify-content: center; /* Center the search form horizontally */
+    align-items: center; /* Center the search form vertically */
+    flex-grow: 1;
+    margin-right: 0; /* Remove margin to balance both sides */
+    height: 100%; /* Make the search form take the full height of the header */
+}
+
+
+.search-input {
+    flex-grow: 1;
+    padding: 0px;
+    border-radius: 0px 0 0 0px;
+    border: none;
+    outline: none;
+    max-width: 600px; /* Adjust the max width of the search bar */
+}
+
+.search-button {
+    background-color: #555555; /* Consistent shade with the footer */
+    color: white;
+    border: none;
+    padding: 0 15px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #404040;
+}
+
+/* Navigation and Dropdowns */
+.nav-container {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+
+.nav-item {
+    position: relative;
+    margin: 0 20px;
+    cursor: pointer;
+}
+
+.nav-item span {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #e0e0e0;
+}
+
+.dropdown {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    padding: 10px;
+    width: 150px;
+}
+
+.dropdown li {
+    padding: 10px;
+    list-style: none;
+}
+
+.dropdown li:hover {
+    background-color: #e0e0e0;
+}
+
+/* Right Section: Cart and Login */
+.header-right {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.cart-container {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-transform: uppercase;
+    margin-right: 30px; /* Increased margin for spacing between Cart and Login */
+}
+
+.cart-container:hover {
+    color: #e0e0e0;
+}
+
+.cart-container svg {
+    margin-right: 5px;
+}
+
+.login-button {
+    background-color: #007b00; /* Changed to green color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 15px; /* Added margin to increase spacing between Login and Cart */
+}
+
+.login-button:hover {
+    background-color: #005f00;
+}
+
+/* General Styles for the Header Elements */
+.header * {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Ensure Proper Spacing Across All Devices */
+@media (max-width: 768px) {
+    .nav-item {
+        margin: 0 10px;
+    }
+    .cart-container,
+    .login-button {
+        margin-right: 10px;
+    }
+}
+.account-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logout-button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 5px 10px;
+    text-transform: uppercase;
+}
+
+.logout-button:hover {
+    color: #e0e0e0;
+}
+.detected-location-box {
+  margin-top: 10px;
+  background-color: #f6f6f6;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 13px;
+  color: #444;
+  border: 1px solid red; /* highlight for testing */
+  word-wrap: break-word;
+}
+.location-value {
+  font-weight: 600;
+  padding-left: 3px;
+}
+
+

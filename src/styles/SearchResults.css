@@ -1,0 +1,33 @@
+.search-container {
+    padding: 20px;
+}
+
+.search-results {
+    margin-top: 20px;
+}
+
+.search-hit {
+    display: flex;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.hit-image {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
+.hit-content {
+    flex: 1;
+}
+
+.hit-content h4 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
+
+.hit-content p {
+    margin: 5px 0;
+}

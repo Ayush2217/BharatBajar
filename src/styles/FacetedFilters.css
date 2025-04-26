@@ -1,0 +1,66 @@
+/* Faceted Filters Styling */
+
+.filters-container {
+  width: 25%;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 20px;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.filter-section {
+  margin-bottom: 20px;
+}
+
+.filter-section h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.filter-section .ais-RefinementList-list {
+  list-style: none;
+  padding: 0;
+}
+
+.filter-section .ais-RefinementList-item {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.filter-section .ais-RefinementList-label {
+  font-size: 14px;
+  color: #555;
+}
+
+.filter-section input[type="search"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.filter-section .ais-RangeSlider {
+  margin-top: 15px;
+}
+
+.filter-section .ais-ClearRefinements-button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.filter-section .ais-ClearRefinements-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}

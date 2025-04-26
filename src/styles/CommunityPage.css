@@ -1,0 +1,200 @@
+/* CommunityPage.css */
+
+/* Hero Section */
+.community-header {
+    background: radial-gradient(circle, #ffffff 0%, #fefaf1 70%, #fdf4e2 100%); /* Same radial gradient as the HomePage */
+    padding: 60px 20px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    color: #1a3e59; /* Darker color for better readability */
+}
+
+.community-header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.community-header p {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+/* CTA Button */
+.cta-button {
+    background-color: #FFFFFF;
+    color: #3a86ff; /* Color consistent with gradient */
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    text-decoration: none;
+}
+
+.cta-button:hover {
+    background-color: #0096c7;
+    color: #FFFFFF;
+    transform: translateY(-5px);
+}
+
+/* Community Page Background */
+.community-page {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #fefaf1; /* Lighter color for consistency with homepage */
+}
+
+/* Community Content Grid */
+.community-content-grid {
+    margin: 50px 0;
+    text-align: center;
+}
+
+.community-content-grid h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #1ea8ba; /* Darker blue for consistency */
+}
+
+/* Content Grid Styles */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Content Tile */
+.content-tile {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: left;
+}
+
+.content-tile h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #1a3e59; /* Dark color for titles */
+}
+
+.content-tile p {
+    color: #666;
+}
+
+/* Discussion Forum Section */
+.discussion-forum {
+    background-color: #fefaf1; /* Lighter color for consistency */
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.discussion-forum h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #1a3e59; /* Dark color for consistency */
+}
+
+.discussion-forum p {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Forum Grid Styles */
+.forum-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Forum Post */
+.forum-post {
+    background-color: #fff;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: left;
+}
+
+.forum-post h4 {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+    color: #1a3e59;
+}
+
+.forum-post p {
+    color: #666;
+}
+.progress-bar-container {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  margin-top: 10px;
+  height: 20px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #4caf50;
+  color: white;
+  text-align: center;
+  line-height: 20px;
+  transition: width 0.4s ease;
+}
+.uploaded-videos-section {
+  margin-top: 20px;
+}
+
+.uploaded-videos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.uploaded-video-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.uploaded-video-item h3 {
+  margin-bottom: 5px;
+}
+
+.progress-bar-container {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  margin-top: 10px;
+  height: 20px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #4caf50;
+  color: white;
+  text-align: center;
+  line-height: 20px;
+  transition: width 0.4s ease;
+}
+.cta-button {
+  margin: 10px;
+  padding: 12px 20px;
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background-color: #0f5cbf;
+}

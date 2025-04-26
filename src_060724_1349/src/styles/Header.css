@@ -1,0 +1,139 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+}
+  
+.logo-container {
+    display: flex;
+    align-items: center;
+    position: relative; /* Ensure relative positioning for absolute children */
+}
+  
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+  
+.nav-container {
+    display: flex;
+    flex: 1; /* Allow nav-container to take up available space */
+    justify-content: center; /* Center the navigation items */
+}
+  
+.nav {
+    display: flex;
+    align-items: center;
+}
+  
+.nav-item {
+    position: relative;
+    margin: 0 15px;
+}
+  
+.nav a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+}
+  
+.nav-item:hover .dropdown {
+    display: block;
+}
+  
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    color: black;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    z-index: 1;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+  
+.dropdown li {
+    padding: 10px;
+}
+  
+.dropdown li a {
+    text-decoration: none;
+    color: black;
+}
+  
+.dropdown li a:hover {
+    background-color: #ddd;
+}
+  
+.logo-container .search-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+  
+.logo-container .search-form {
+    position: absolute;
+    top: 40px; /* Adjust to place below the search icon */
+    left: 0;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    margin-top: 10px;
+}
+  
+.logo-container .search-input {
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    width: 200px;
+}
+  
+.login-container {
+    display: flex;
+    justify-content: flex-end;
+}
+  
+.nav .login-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px; /* Ensure the font size matches the design */
+    text-decoration: none; /* Remove underline */
+}
+  
+.nav .login-button:hover {
+    background-color: #45a049;
+}
+  
+.login-button {
+    background-color: #4CAF50; /* Green background */
+    border: none; /* Remove border */
+    color: white; /* White text */
+    padding: 10px 15px; /* Some padding */
+    text-align: center; /* Center the text (if it's a block element) */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Make the link like a button */
+    font-size: 16px; /* Increase font size */
+    margin: 4px 2px; /* Some margin */
+    cursor: pointer; /* Pointer/hand icon on hover */
+    border-radius: 05px; /* Rounded corners */
+}
+  
+.login-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+

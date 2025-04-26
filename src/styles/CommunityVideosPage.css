@@ -1,0 +1,103 @@
+/* CommunityVideosPage.css */
+.community-videos-page {
+  display: flex;
+}
+
+.sidebar {
+  width: 240px;
+  background-color: #202020;
+}
+
+.top-categories {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  display: flex;
+  padding: 10px;
+  background-color: #181818;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.category-button {
+  color: #ffffff;
+  background-color: #333333;
+  border: none;
+  border-radius: 16px;
+  padding: 8px 16px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.category-button:hover {
+  background-color: #444444;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.video-feed {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.video-card {
+  width: calc(33.333% - 16px);
+  background-color: #1e1e1e;
+  padding: 10px;
+  border-radius: 8px;
+}
+/* Top categories bar */
+.top-categories-bar {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 10px 20px;
+    background-color: #181818;
+    overflow-x: auto; /* Allows scrolling for smaller screens */
+    white-space: nowrap; /* Prevents items from wrapping */
+    border-bottom: 1px solid #333;
+}
+
+.top-categories-bar .category-item {
+    color: #fff;
+    background-color: #333;
+    padding: 8px 15px;
+    border-radius: 18px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.top-categories-bar .category-item:hover {
+    background-color: #555;
+}
+.progress-bar-container {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  margin-top: 10px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #4caf50;
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,82 @@
+/* src/styles/RepairProtectionPage.css */
+
+/* General styling for the entire Repair & Protection page */
+.repair-protection-page {
+    padding: 20px;
+    background-color: #f9f9f9; /* Light gray background for better contrast */
+}
+
+/* Section Header styling */
+.repair-protection-page h3 {
+    color: #007b8a; /* Matches theme color */
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Diagnostic Tools Section */
+.diagnostic-tools-section {
+    padding: 20px;
+    background-color: #ffffff; /* White background for each section */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+/* Protection Plans Section */
+.protection-plans-section {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+/* Repair Services Section */
+.repair-services-section {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+/* Text Styling for Section Content */
+.repair-protection-page p {
+    color: #555; /* Dark gray for readability */
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Buttons for Booking or Viewing Plans */
+.repair-protection-page .action-button {
+    padding: 10px 20px;
+    background-color: #007b8a;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.repair-protection-page .action-button:hover {
+    background-color: #005f6b; /* Darker shade on hover */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .repair-protection-page {
+        padding: 10px;
+    }
+
+    .diagnostic-tools-section,
+    .protection-plans-section,
+    .repair-services-section {
+        padding: 15px;
+    }
+
+    .repair-protection-page p {
+        font-size: 1rem;
+    }
+}

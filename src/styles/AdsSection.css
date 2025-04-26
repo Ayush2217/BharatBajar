@@ -1,0 +1,27 @@
+/* AdsSection.css */
+
+.ads-section {
+    width: 200px;
+    background: radial-gradient(circle, #007b8a, #007b8a);
+    margin-left: 20px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    color: white;
+    position: sticky; /* To prevent overlapping when scrolling */
+    top: 70px; /* Adjusted to ensure it stays below the header */
+}
+.ads-section-container {
+    width: 280px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners for the entire sidebar */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for the sidebar container */
+    margin-right: 20px; /* Space between sidebar and main content */
+	margin-bottom: 20px;
+}
+
+.ads-section p {
+    margin: 0;
+}

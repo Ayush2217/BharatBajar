@@ -1,0 +1,199 @@
+/* Main Page Styling */
+.gpt-chat-page {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: radial-gradient(circle, #b2f5ff, #f4ffcf);
+    margin: 0;
+}
+
+/* Main Header */
+.gpt-header {
+    background-color: #e6e8ea;
+    color: #3a86ff; /* Use one of the gradient colors for text color */
+	background: radial-gradient(circle, #007b8a, #007b8a);
+    position: fixed;
+    width: 98%;
+    padding: 20px 40px 10px 20px;
+    display: flex;
+    align-items: center;
+    top: 100;
+    left: 0;
+	right: 0;
+    z-index: 1;
+    margin: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation Buttons in Header */
+.gpt-nav {
+    display: flex;
+    gap: 10px;
+	right: 10;
+}
+
+.gpt-nav-left {
+    display: flex;
+    gap: 10px;
+    flex: 1;
+}
+
+.gpt-nav-right {
+    display: flex;
+    gap: 10px;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.general-title {
+    margin: auto;
+    font-weight: bold;
+    color: #f7f7f7;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+/* Chat Container */
+.gpt-chat-container {
+    display: flex;
+    flex: 1;
+    margin-top: 60px; /* Adjusted to fit below the fixed headers */
+}
+
+/* Sidebar with elliptical cards */
+.gpt-sidebar {
+    width: 260px;
+	position: sticky; /* Make the sidebar sticky */
+	top: 60px; /* Align it below the fixed header */
+    background: radial-gradient(circle, #007b8a,#007b8a);
+    padding: 20px 15px;
+    border-right: 2px solid #ccc;
+    height: calc(100vh - 60px);
+    box-sizing: border-box;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.gpt-section {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+}
+
+.gpt-section h3 {
+    font-size: 1.4em;
+    color: #0f3460;
+    margin-bottom: 15px;
+}
+
+.gpt-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.gpt-section ul li {
+    margin-bottom: 15px;
+}
+
+.gpt-section ul li a {
+    display: block;
+    padding: 10px 15px;
+    background-color: #007b8a;
+    color: white;
+    border-radius: 30px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.gpt-section ul li a:hover {
+    background-color: #005f66;
+    transform: translateY(-3px);
+	text-decoration: underline;
+}
+
+/* Main Chat Box Styling */
+.gpt-main-chat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: radial-gradient(circle, #007b8a, #007b8a);
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    height: calc(100vh - 60px);
+}
+
+.gpt-chat-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.gpt-messages {
+    flex: 1;
+    padding: 15px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.gpt-input-container {
+    display: flex;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    margin-bottom: 0;
+}
+
+.gpt-input-container input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.gpt-send-button {
+    background: radial-gradient(circle, #777b8a, #777b8a);;
+    color: white;
+    padding: 20px 20px; /* Adjust padding to match input height */
+    border: none;
+    border-radius: 5px; /* Rounded corners for better visibility */
+    cursor: pointer;
+    margin-left: 10px; /* Added margin to create space between the input and the button */
+}
+
+.gpt-send-button:hover {
+    background-color: #2d3142;
+    transform: translateY(-2px);
+}
+
+/* Button styling */
+.gpt-button {
+    background-color: #007b8a; /* Same as main page */
+    border: none;
+    padding: 8px 16px;
+    color: #007b8a; /* Same as main page */
+    border-radius: 10px; /* Rounded for a smoother look */
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+.gpt-button:hover {
+    background-color: #005f66;
+    transform: translateY(-2px);
+}

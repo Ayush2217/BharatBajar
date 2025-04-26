@@ -1,0 +1,190 @@
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { FaMapMarkerAlt, FaCaretDown, FaShoppingCart } from 'react-icons/fa';
+//import searchProductsAndServices from '../services/searchProductsAndServices'; // Backend-powered search function
+import '../styles/Header.css';
+import searchIcon from '../assets/Logo.png';
+import AuthModal from './auth/AuthModal';
+import AlgoliaSearchBar from "./Common/AlgoliaSearchBar"; // Import the new component
+const Header = () => {
+    //const [searchQuery, setSearchQuery] = useState('');
+    //const [searchResults, setSearchResults] = useState([]); // State for search results
+    const [errorMessage, setErrorMessage] = useState(''); // State for error messages
+    const [dropdownOpen, setDropdownOpen] = useState('');
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [username, setUsername] = useState('');
+    const [location, setLocation] = useState('Hyderabad');
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    let closeTimeout;
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        const storedUsername = localStorage.getItem('username');
+        if (token && storedUsername) {
+            setIsLoggedIn(true);
+            const firstName = storedUsername.split(' ')[0];
+            setUsername(firstName);
+        }
+    }, []);
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+        setIsLoggedIn(false);
+        setUsername('');
+        alert('User logged out');
+    };
+
+    
+
+    const toggleDropdown = (menu) => {
+        clearTimeout(closeTimeout);
+        setDropdownOpen(menu);
+    };
+
+    const closeDropdownWithDelay = () => {
+        closeTimeout = setTimeout(() => {
+            setDropdownOpen('');
+        }, 200);
+    };
+
+    const handleLocationSelect = (selectedLocation) => {
+        setLocation(selectedLocation);
+        setDropdownOpen('');
+    };
+
+    const getFormattedLocation = (location) => {
+        const words = location.split(' ');
+        return words.length === 1
+            ? location.slice(0, 3).toUpperCase()
+            : words.map(word => word[0].toUpperCase()).join('');
+    };
+
+    const toggleModal = () => {
+        setIsModalOpen(!isModalOpen);
+    };
+
+    return (
+        <header className="header">
+            {/* Logo and Location Dropdown */}
+            <div className="header-left">
+                <Link to="/">
+                    <img src={searchIcon} alt="Logo" className="header-logo" />
+                </Link>
+                <div
+                    className="location-container"
+                    onMouseEnter={() => toggleDropdown('location')}
+                    onMouseLeave={closeDropdownWithDelay}
+                >
+                    <FaMapMarkerAlt className="location-icon" />
+                    <span className="location-label">DELIVER TO</span>
+                    <span className="location-value">{getFormattedLocation(location)}</span>
+                    <FaCaretDown className="dropdown-icon" />
+                    {dropdownOpen === 'location' && (
+                        <div
+                            className="location-dropdown"
+                            onMouseEnter={() => toggleDropdown('location')}
+                            onMouseLeave={closeDropdownWithDelay}
+                        >
+                            <input type="text" placeholder="SEARCH FOR YOUR LOCATION" className="location-input" />
+                            <ul className="location-list">
+                                <li onClick={() => handleLocationSelect('Noida')}>NOIDA</li>
+                                <li onClick={() => handleLocationSelect('Greater Noida')}>GREATER NOIDA</li>
+                                <li onClick={() => handleLocationSelect('Delhi')}>DELHI</li>
+                                <li onClick={() => handleLocationSelect('Gurugram')}>GURUGRAM</li>
+                                <li onClick={() => handleLocationSelect('Ghaziabad')}>GHAZIABAD</li>
+                                <li onClick={() => handleLocationSelect('Faridabad')}>FARIDABAD</li>
+                                <li onClick={() => handleLocationSelect('Lucknow')}>LUCKNOW</li>
+                            </ul>
+                        </div>
+                    )}
+                </div>
+            </div>
+
+            {/* Search Bar */}
+			<AlgoliaSearchBar />
+
+            {/* Navigation and Dropdowns */}
+            <nav className="nav-container">
+                {['services', 'research', 'contact', 'orders'].map((menu) => (
+                    <div
+                        key={menu}
+                        className="nav-item"
+                        onMouseEnter={() => toggleDropdown(menu)}
+                        onMouseLeave={closeDropdownWithDelay}
+                    >
+                        <span>{menu.toUpperCase()}</span>
+                        {dropdownOpen === menu && (
+                            <ul
+                                className="dropdown"
+                                onMouseEnter={() => toggleDropdown(menu)}
+                                onMouseLeave={closeDropdownWithDelay}
+                            >
+                                {menu === 'services' && (
+                                    <>
+                                        <li><Link to="/salespage">SALES</Link></li>
+                                        <li><Link to="/repair">REPAIR</Link></li>
+                                        <li><Link to="/refurbishedpage">RESALE</Link></li>
+                                        <li><Link to="/warrantypage">WARRANTY</Link></li>
+                                        <li><Link to="/trainingpage">TRAINING</Link></li>
+                                        <li><Link to="/learningpage">LEARNING</Link></li>
+                                    </>
+                                )}
+                                {menu === 'research' && (
+                                    <>
+                                        <li><Link to="/ai">AI</Link></li>
+                                        <li><Link to="/blockchain">BLOCKCHAIN</Link></li>
+                                        <li><Link to="/sustainability">SUSTAINABILITY</Link></li>
+                                    </>
+                                )}
+                                {menu === 'contact' && (
+                                    <>
+                                        <li><Link to="/support">SUPPORT</Link></li>
+                                        <li><Link to="/contactsales">SALES</Link></li>
+                                        <li><Link to="/feedback">FEEDBACK</Link></li>
+                                    </>
+                                )}
+                                {menu === 'orders' && (
+                                    <>
+                                        <li><Link to="/order-history">YOUR ORDERS</Link></li>
+                                        <li><Link to="/cart">CART</Link></li>
+                                        <li><Link to="/wishlist">WISHLIST</Link></li>
+                                        <li><Link to="/shopping-lists">SHOPPING LISTS</Link></li>
+                                    </>
+                                )}
+                            </ul>
+                        )}
+                    </div>
+                ))}
+            </nav>
+
+            {/* Account and Cart Section */}
+            <div className="header-right">
+                <Link to="/cart" className="cart-container">
+                    <FaShoppingCart /> CART
+                </Link>
+                {isLoggedIn ? (
+                    <div className="account-actions">
+                        <span className="welcome-message">HELLO, {username.toUpperCase()}</span>
+                        <button className="logout-button" onClick={handleLogout}>LOGOUT</button>
+                    </div>
+                ) : (
+                    <button className="login-button" onClick={toggleModal}>LOGIN</button>
+                )}
+            </div>
+            <AuthModal
+                isOpen={isModalOpen}
+                onClose={toggleModal}
+                setIsLoggedIn={setIsLoggedIn}
+                setUsername={(fullName) => {
+                    const firstName = fullName.split(' ')[0];
+                    setUsername(firstName);
+                    localStorage.setItem('username', fullName);
+                }}
+            />
+        </header>
+    );
+};
+
+export default Header;

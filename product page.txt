@@ -1,0 +1,4 @@
+Create dummy APIs in Django.
+Add necessary frontend files and routes.
+Use APIs in React to display dynamic data.
+Test end-to-end functionality.

@@ -1,0 +1,53 @@
+/* SalesHeroSection.css */
+
+.sales-hero-section {
+    position: relative;
+    width: 100%; /* Full width of the parent container */
+    height: 400px; /* Set a specific height for consistency */
+    max-width: 100vw; /* Constrain width to viewport width */
+    overflow: hidden;
+    background-color: #f8f8f8;
+    margin: 0 auto; /* Center align */
+	padding-bottom: 20px; /* Adds space below the hero section */
+}
+
+.hero-carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%; /* Inherit container height */
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Maintains aspect ratio without cropping */
+    border-radius: 8px;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.carousel-control:hover {
+    background-color: rgba(255, 255, 255, 1);
+}

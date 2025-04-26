@@ -1,0 +1,157 @@
+/* The Modal (background) */
+.modal {
+    display: flex; /* Use flex to better control the alignment of the modal content */
+    align-items: center; /* Center modal content vertically */
+    justify-content: center; /* Center modal content horizontally */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    padding: 10px;
+    border: 1px solid #888;
+    width: 90%; /* Adapt to screen size, with padding */
+    max-width: 400px; /* Control maximum width to ensure it doesn't get too large on wider screens */
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+/* Modal Header */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+/* Styles for form elements inside the modal */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Ensure form elements use the full width */
+}
+
+/* Style for each input and label group */
+.form-group {
+    display: flex;
+    flex-direction: column; /* Stack label and input vertically */
+    align-items: stretch; /* Align items to stretch to the full width */
+    width: 100%; /* Ensure the form group takes full width */
+}
+
+/* Uniform style for labels */
+label {
+    margin-bottom: 5px; /* Space between label and input */
+    font-weight: bold; /* Make label text bold */
+}
+
+/* Styling for input fields */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"] {
+    width: 100%; /* Full width to match the form's width */
+    padding: 10px;
+    margin-bottom: 0px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+/* Buttons within the form */
+.continue-button,
+.toggle-button,
+.social-button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center; /* Center text */
+}
+
+.continue-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.continue-button:hover {
+    background-color: #45a049;
+}
+
+.toggle-button {
+    background-color: transparent;
+    color: #007BFF;
+    text-decoration: underline;
+    margin-top: 20px; /* More space on top */
+}
+
+.or-divider {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    line-height: 0.1em;
+    margin: 20px 0;
+    color: #777;
+}
+
+.or-divider span {
+    background: #fff;
+    padding: 0 10px;
+}
+
+.social-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+}
+
+.social-button:hover {
+    background-color: #f1f1f1;
+}
+
+.social-logo {
+    height: 20px;
+    margin-right: 10px;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
