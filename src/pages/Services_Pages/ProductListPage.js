@@ -1,142 +1,136 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import algoliasearch from 'algoliasearch/lite';
+import {
+  InstantSearch,
+  SearchBox,
+  Hits,
+  RefinementList,
+  RatingMenu,
+  ToggleRefinement,
+  Configure,
+  connectSortBy,
+} from 'react-instantsearch-dom';
 import '../../styles/ProductListPage.css';
-import ProductCard from '../../components/Common/ProductCard';
-import ProductFilters from '../../components/Common/ProductFilters';
-import Pagination from '../../components/Common/Pagination';
-import axios from 'axios';
-import { useCart } from "../../contexts/CartContext";
+import { useCart } from '../../contexts/CartContext';
+import { useNavigate } from 'react-router-dom';
+
+const searchClient = algoliasearch('8MRLOZ7A26', '489c1269a1685a0990ecf6569113b29c');
+
+// 🛠 Static category and subcategory selected
+const FIXED_CATEGORY = "Mobile Devices & Accessories";
+const FIXED_SUBCATEGORY = "Smart Watches";
+
+const ProductCardAlgolia = ({ hit }) => {
+  const { addToCart } = useCart();
+  const navigate = useNavigate();
+
+  return (
+    <div className="product-card">
+      <h4 className="store-name">Store: {hit.store_name || 'Unknown Store'}</h4>
+      <img src={hit.image || 'https://via.placeholder.com/300'} alt={hit.name} className="product-image" />
+      <div className="product-info">
+        <h3 className="product-name">{hit.name}</h3>
+        <p className="product-price">₹{hit.price ? hit.price.toLocaleString() : 'N/A'}</p>
+        <div className="button-container">
+          <button onClick={() => { addToCart(hit); navigate('/cart'); }}>Add to Cart</button>
+          <button onClick={() => navigate('/checkout')}>Buy Now</button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const CustomSortBy = connectSortBy(({ items, currentRefinement, refine }) => (
+  <select
+    value={currentRefinement}
+    onChange={(event) => refine(event.target.value)}
+    style={{ padding: '5px', marginBottom: '20px' }}
+  >
+    {items.map((item) => (
+      <option key={item.value} value={item.value}>
+        {item.label}
+      </option>
+    ))}
+  </select>
+));
 
 const ProductListPage = () => {
-    const { categoryName, subcategoryName } = useParams(); // Get category and subcategory from URL
-    const [searchParams] = useSearchParams(); // Get query parameters
-    const [products, setProducts] = useState([]);
-    const [filteredProducts, setFilteredProducts] = useState([]); // Track filtered products
-    const [paginatedProducts, setPaginatedProducts] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 10;
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const { addToCart } = useCart();
-    const navigate = useNavigate();
+  const { addToCart } = useCart();
+  const navigate = useNavigate();
 
-    const handleAddToCart = (product) => {
-        if (product) {
-            addToCart(product);
-            console.log(`${product.name} added to cart.`);
-        } else {
-            console.error("Product is not loaded yet.");
-        }
-    };
+  const [indexName, setIndexName] = useState('mobile_device1');
+  const [minPrice, setMinPrice] = useState('');
+  const [maxPrice, setMaxPrice] = useState('');
+  const [priceFilterString, setPriceFilterString] = useState('');
 
-    const handleBuyNow = (product) => {
-        console.log(`Proceeding to buy ${product.name}.`);
-    };
+  const applyPriceFilter = (min, max) => {
+    const filters = [];
+    if (min) filters.push(`price >= ${min}`);
+    if (max) filters.push(`price <= ${max}`);
+    setPriceFilterString(filters.join(' AND '));
+  };
 
-    const handleProductClick = (productName) => {
-        navigate(`/product-details/${encodeURIComponent(productName)}`);
-    };
+  return (
+    <div className="product-list-page">
+      <h1>{FIXED_SUBCATEGORY ? `${FIXED_SUBCATEGORY} in ${FIXED_CATEGORY}` : FIXED_CATEGORY}</h1>
 
-    const handleFilterChange = (filters) => {
-        // Apply filters to the products
-        const { brand, priceRange, ratings } = filters;
-        const filtered = products.filter((product) => {
-            const matchesBrand = brand ? product.brand === brand : true;
-            const matchesPrice = priceRange ? product.price >= priceRange[0] && product.price <= priceRange[1] : true;
-            const matchesRatings = ratings ? product.rating >= ratings : true;
-            return matchesBrand && matchesPrice && matchesRatings;
-        });
-        setFilteredProducts(filtered);
-        paginateProducts(filtered, 1); // Reset pagination with filtered data
-    };
+      <InstantSearch indexName={indexName} searchClient={searchClient}>
+        <Configure
+          filters={`subcategory:"${FIXED_SUBCATEGORY}"${priceFilterString ? ` AND ${priceFilterString}` : ''}`}
+        />
 
-    useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                setLoading(true);
-                const decodedCategoryName = categoryName ? decodeURIComponent(categoryName) : null;
-                const decodedSubcategoryName = subcategoryName ? decodeURIComponent(subcategoryName) : null;
-                const brandFilter = searchParams.get('brand') ? decodeURIComponent(searchParams.get('brand')) : null;
-
-                const BASE_URL = 'http://192.168.0.141:8000';
-
-				const apiUrl = brandFilter
-					? `${BASE_URL}/api/products/${decodedSubcategoryName}/?brand=${encodeURIComponent(brandFilter)}`
-					: `${BASE_URL}/api/products/${decodedSubcategoryName || ''}/`;
-
-
-                const response = await axios.get(apiUrl);
-                const fetchedProducts = response.data.products || [];
-                setProducts(fetchedProducts);
-                setFilteredProducts(fetchedProducts); // Initially show all products
-                paginateProducts(fetchedProducts, 1);
-            } catch (err) {
-                console.error('Error loading products:', err);
-                setError('Failed to load products. Please try again later.');
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchProducts();
-    }, [categoryName, subcategoryName, searchParams]);
-
-    const paginateProducts = (allProducts, page) => {
-        const start = (page - 1) * itemsPerPage;
-        const end = start + itemsPerPage;
-        setPaginatedProducts(allProducts.slice(start, end));
-    };
-
-    const handlePageChange = (page) => {
-        setCurrentPage(page);
-        paginateProducts(filteredProducts, page); // Paginate filtered products
-    };
-
-    if (loading) {
-        return <div>Loading products...</div>;
-    }
-
-    if (error) {
-        return <div>{error}</div>;
-    }
-
-    return (
-        <div className="product-list-page">
-            <h1>
-                {subcategoryName ? `${subcategoryName} in ${categoryName}` : categoryName}
-            </h1>
-
-            <div className="filters-container">
-                <ProductFilters onFilterChange={handleFilterChange} />
+        <div style={{ display: 'flex', gap: '20px' }}>
+          <div className="sidebar">
+            <h3>Filters</h3>
+            <RefinementList attribute="brand" />
+            <div style={{ marginTop: '20px' }}>
+              <label style={{ fontWeight: 600 }}>Price Range</label>
+              <input
+                type="number"
+                placeholder="Min Price"
+                value={minPrice}
+                onChange={(e) => setMinPrice(e.target.value)}
+                style={{ marginTop: 5, marginBottom: 5, padding: '5px', width: '100%' }}
+              />
+              <input
+                type="number"
+                placeholder="Max Price"
+                value={maxPrice}
+                onChange={(e) => setMaxPrice(e.target.value)}
+                style={{ marginBottom: 10, padding: '5px', width: '100%' }}
+              />
+              <button
+                onClick={() => applyPriceFilter(minPrice, maxPrice)}
+                style={{ padding: '5px', width: '100%' }}
+              >
+                Apply Price Filter
+              </button>
             </div>
+            <RatingMenu attribute="rating" />
+            <ToggleRefinement attribute="stock" label="In Stock Only" />
+          </div>
+
+          <div style={{ flex: 1 }}>
+            <SearchBox translations={{ placeholder: 'Search products...' }} />
+
+            <select
+              value={indexName}
+              onChange={(e) => setIndexName(e.target.value)}
+              style={{ padding: '5px', marginBottom: '20px' }}
+            >
+              <option value="mobile_device1">Relevance</option>
+              <option value="mobile_device1_price_asc">Price Low to High</option>
+              <option value="mobile_device1_price_desc">Price High to Low</option>
+            </select>
 
             <div className="product-grid">
-                {paginatedProducts.length > 0 ? (
-                    paginatedProducts.map((product) => (
-                        <ProductCard
-                            key={product.name}
-                            productName={product.name}
-                            productImage={product.image}
-                            productPrice={product.price}
-                            productData={product}
-                            onAddToCart={() => handleAddToCart(product)}
-                            onBuyNow={() => handleBuyNow(product)}
-                            onClick={() => handleProductClick(product.name)}
-                        />
-                    ))
-                ) : (
-                    <p>No products available for this category.</p>
-                )}
+              <Hits hitComponent={ProductCardAlgolia} />
             </div>
-
-            <Pagination
-                currentPage={currentPage}
-                setPage={handlePageChange}
-                totalItems={filteredProducts.length} // Use filtered products count
-                itemsPerPage={itemsPerPage}
-            />
+          </div>
         </div>
-    );
+      </InstantSearch>
+    </div>
+  );
 };
 
 export default ProductListPage;
