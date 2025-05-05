@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaMapMarkerAlt, FaCaretDown, FaShoppingCart } from "react-icons/fa";
-import AlgoliaSearchBar from "./Common/AlgoliaSearchBar";
-import LocationSelector from "./Common/LocationSelector";
+import AlgoliaSearchBar from "./Common/AlgoliaSearchBar"; // Import Algolia search component
 import "../styles/Header.css";
-import searchIcon from "../assets/New_Logo.png";
+import searchIcon from "../assets/Logo.png";
 import AuthModal from "./auth/AuthModal";
 
 const Header = ({ data }) => {
   const [dropdownOpen, setDropdownOpen] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
-  const [location, setLocation] = useState("..."); // Default to loading
+  const [location, setLocation] = useState("Hyderabad");
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  let closeTimeout;
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -24,54 +25,6 @@ const Header = ({ data }) => {
     }
   }, []);
 
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (
-        !e.target.closest(".location-container") &&
-        !e.target.closest(".location-dropdown")
-      ) {
-        setDropdownOpen("");
-      }
-    };
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
-  }, []);
-
-  useEffect(() => {
-    // Auto-detect city on load
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        async (position) => {
-          const { latitude, longitude } = position.coords;
-          try {
-            const response = await fetch(
-              `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyANCubMNUmqqqSkoMaLEHDCnP29XLQ_2uU`
-            );
-            const data = await response.json();
-            if (data.status === "OK") {
-              const result = data.results.find((r) =>
-                r.types.includes("locality")
-              ) || data.results[0];
-
-              const cityComponent = result.address_components.find((comp) =>
-                comp.types.includes("locality")
-              );
-
-              const city = cityComponent?.long_name || "Unknown";
-              setLocation(city);
-            }
-          } catch (err) {
-            console.error("City detection error:", err);
-          }
-        },
-        (error) => {
-          console.warn("User denied location access:", error);
-          // Do not show alert here to avoid spam
-        }
-      );
-    }
-  }, []);
-
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
@@ -80,57 +33,82 @@ const Header = ({ data }) => {
     alert("User logged out");
   };
 
-  const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
-  };
-
   const toggleDropdown = (menu) => {
+    clearTimeout(closeTimeout);
     setDropdownOpen(menu);
   };
 
   const closeDropdownWithDelay = () => {
-    setTimeout(() => {
+    closeTimeout = setTimeout(() => {
       setDropdownOpen("");
     }, 200);
   };
 
-  const getFormattedLocation = (loc) => {
-    return loc.length > 0 ? loc.toUpperCase().slice(0, 8) : "LOC";
+  const handleLocationSelect = (selectedLocation) => {
+    setLocation(selectedLocation);
+    setDropdownOpen("");
+  };
+
+  const getFormattedLocation = (location) => {
+    const words = location.split(" ");
+    return words.length === 1
+      ? location.slice(0, 3).toUpperCase()
+      : words.map((word) => word[0].toUpperCase()).join("");
+  };
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
   };
 
   return (
     <header className="header">
+      {/* Logo and Location Dropdown */}
       <div className="header-left">
         <Link to="/">
           <img src={searchIcon} alt="Logo" className="header-logo" />
         </Link>
         <div
           className="location-container"
-          onClick={() =>
-            setDropdownOpen(dropdownOpen === "location" ? "" : "location")
-          }
+          onMouseEnter={() => toggleDropdown("location")}
+          onMouseLeave={closeDropdownWithDelay}
         >
           <FaMapMarkerAlt className="location-icon" />
           <span className="location-label">DELIVER TO</span>
           <span className="location-value">{getFormattedLocation(location)}</span>
           <FaCaretDown className="dropdown-icon" />
           {dropdownOpen === "location" && (
-            <div>
-              <LocationSelector
-                setLocation={({ short }) => {
-                  setLocation(short);
-                }}
-                closeDropdown={() => setDropdownOpen("")}
+            <div
+              className="location-dropdown"
+              onMouseEnter={() => toggleDropdown("location")}
+              onMouseLeave={closeDropdownWithDelay}
+            >
+              <input
+                type="text"
+                placeholder="SEARCH FOR YOUR LOCATION"
+                className="location-input"
               />
+              <ul className="location-list">
+                <li onClick={() => handleLocationSelect("Noida")}>NOIDA</li>
+                <li onClick={() => handleLocationSelect("Greater Noida")}>
+                  GREATER NOIDA
+                </li>
+                <li onClick={() => handleLocationSelect("Delhi")}>DELHI</li>
+                <li onClick={() => handleLocationSelect("Gurugram")}>GURUGRAM</li>
+                <li onClick={() => handleLocationSelect("Ghaziabad")}>GHAZIABAD</li>
+                <li onClick={() => handleLocationSelect("Faridabad")}>FARIDABAD</li>
+                <li onClick={() => handleLocationSelect("Lucknow")}>LUCKNOW</li>
+              </ul>
             </div>
           )}
         </div>
       </div>
 
+      {/* Algolia Search Bar */}
       <div className="header-search">
-        <AlgoliaSearchBar />
+        <AlgoliaSearchBar /> {/* Replacing the old search bar */}
       </div>
 
+      {/* Navigation and Dropdowns */}
       <nav className="nav-container">
         {["services", "research", "contact", "orders"].map((menu) => (
           <div
@@ -148,34 +126,69 @@ const Header = ({ data }) => {
               >
                 {menu === "services" && (
                   <>
-                    <li><Link to="/salespage">SALES</Link></li>
-                    <li><Link to="/stores">STORE</Link></li>
-                    <li><Link to="/refurbishedpage">RESALE</Link></li>
-                    <li><Link to="/warrantypage">WARRANTY</Link></li>
-                    <li><Link to="/trainingpage">TRAINING</Link></li>
-                    <li><Link to="/learningpage">LEARNING</Link></li>
+                    <li>
+                      <Link to="/salespage">SALES</Link>
+                    </li>
+                    <li>
+                      <Link to="/onboarding">ONBOARDING</Link>
+                    </li>
+                    <li>
+                      <Link to="/repair">REPAIR</Link>
+                    </li>
+                    <li>
+                      <Link to="/refurbishedpage">RESALE</Link>
+                    </li>
+                    <li>
+                      <Link to="/warrantypage">WARRANTY</Link>
+                    </li>
+                    <li>
+                      <Link to="/trainingpage">TRAINING</Link>
+                    </li>
+                    <li>
+                      <Link to="/learningpage">LEARNING</Link>
+                    </li>
                   </>
                 )}
                 {menu === "research" && (
                   <>
-                    <li><Link to="/ai">AI</Link></li>
-                    <li><Link to="/blockchain">BLOCKCHAIN</Link></li>
-                    <li><Link to="/sustainability">SUSTAINABILITY</Link></li>
+                    <li>
+                      <Link to="/ai">AI</Link>
+                    </li>
+                    <li>
+                      <Link to="/blockchain">BLOCKCHAIN</Link>
+                    </li>
+                    <li>
+                      <Link to="/sustainability">SUSTAINABILITY</Link>
+                    </li>
                   </>
                 )}
                 {menu === "contact" && (
                   <>
-                    <li><Link to="/support">SUPPORT</Link></li>
-                    <li><Link to="/contactsales">SALES</Link></li>
-                    <li><Link to="/feedback">FEEDBACK</Link></li>
+                    <li>
+                      <Link to="/support">SUPPORT</Link>
+                    </li>
+                    <li>
+                      <Link to="/contactsales">SALES</Link>
+                    </li>
+                    <li>
+                      <Link to="/feedback">FEEDBACK</Link>
+                    </li>
                   </>
                 )}
                 {menu === "orders" && (
                   <>
-                    <li><Link to="/order-history">YOUR ORDERS</Link></li>
-                    <li><Link to="/cart">CART</Link></li>
-                    <li><Link to="/wishlist">WISHLIST</Link></li>
-                    <li><Link to="/shopping-lists">SHOPPING LISTS</Link></li>
+                    <li>
+                      <Link to="/order-history">YOUR ORDERS</Link>
+                    </li>
+                    <li>
+                      <Link to="/cart">CART</Link>
+                    </li>
+                    <li>
+                      <Link to="/wishlist">WISHLIST</Link>
+                    </li>
+                    <li>
+                      <Link to="/shopping-lists">SHOPPING LISTS</Link>
+                    </li>
                   </>
                 )}
               </ul>
@@ -184,6 +197,7 @@ const Header = ({ data }) => {
         ))}
       </nav>
 
+      {/* Account and Cart Section */}
       <div className="header-right">
         <Link to="/cart" className="cart-container">
           <FaShoppingCart /> CART

@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@jsonforms/material-renderers": "^3.5.1",
+    "@jsonforms/react": "^3.5.1",
+    "@mui/material": "^7.0.2",
     "@mux/mux-node": "^8.8.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",

@@ -49,8 +49,8 @@ import Careers from './pages/AboutUS_Pages/Careers';
 import Mission from './pages/AboutUS_Pages/Mission';
 import { CartProvider } from './contexts/CartContext';
 import SearchResultsPage from './pages/Services_Pages/SearchResultsPage';
-import isWebView from './utils/isWebView';
-
+import AlgoliaProductList from './pages/Services_Pages/AlgoliaProductList';
+import StoreOnboarding from './pages/Services_Pages/StoreOnboarding';
 
 function App() {
     return (
@@ -110,9 +110,20 @@ function App() {
                         <Route path="/mission" element={<Mission />} />
                         <Route path="/new-discussion" element={<NewDiscussionPopup />} />
                         <Route path="/discussion/:title" element={<DiscussionPage />} />
+                        {/* <Route path="/onboarding" element={<StoreOnboarding />} /> */}
+                        <Route path="/onboarding" element={
+                            <CartProvider>
+                                <StoreOnboarding />
+                            </CartProvider>
+                            } />
+                        <Route path="/explore-products" element={
+                            <CartProvider>
+                                <AlgoliaProductList />
+                            </CartProvider>
+                        } />
                     </Routes>
                 </main>
-                {!isWebView() && <Footer />}
+                <Footer />
             </div>
         </Router>
     );
