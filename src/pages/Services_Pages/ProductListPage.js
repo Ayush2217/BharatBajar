@@ -3,42 +3,22 @@ import algoliasearch from 'algoliasearch/lite';
 import {
   InstantSearch,
   SearchBox,
-  Hits,
   RefinementList,
   RatingMenu,
   ToggleRefinement,
   Configure,
   connectSortBy,
+  connectHits
 } from 'react-instantsearch-dom';
 import '../../styles/ProductListPage.css';
 import { useCart } from '../../contexts/CartContext';
 import { useNavigate } from 'react-router-dom';
+import ProductCard from '../../components/Common/ProductCard';
 
 const searchClient = algoliasearch('8MRLOZ7A26', '489c1269a1685a0990ecf6569113b29c');
 
-// 🛠 Static category and subcategory selected
 const FIXED_CATEGORY = "Mobile Devices & Accessories";
 const FIXED_SUBCATEGORY = "Smart Watches";
-
-const ProductCardAlgolia = ({ hit }) => {
-  const { addToCart } = useCart();
-  const navigate = useNavigate();
-
-  return (
-    <div className="product-card">
-      <h4 className="store-name">Store: {hit.store_name || 'Unknown Store'}</h4>
-      <img src={hit.image || 'https://via.placeholder.com/300'} alt={hit.name} className="product-image" />
-      <div className="product-info">
-        <h3 className="product-name">{hit.name}</h3>
-        <p className="product-price">₹{hit.price ? hit.price.toLocaleString() : 'N/A'}</p>
-        <div className="button-container">
-          <button onClick={() => { addToCart(hit); navigate('/cart'); }}>Add to Cart</button>
-          <button onClick={() => navigate('/checkout')}>Buy Now</button>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const CustomSortBy = connectSortBy(({ items, currentRefinement, refine }) => (
   <select
@@ -54,10 +34,23 @@ const CustomSortBy = connectSortBy(({ items, currentRefinement, refine }) => (
   </select>
 ));
 
-const ProductListPage = () => {
-  const { addToCart } = useCart();
-  const navigate = useNavigate();
+// ✅ Custom Hits renderer to fix horizontal layout
+const CustomHits = connectHits(({ hits }) => (
+  <div className="product-grid">
+    {hits.map(hit => (
+      <ProductCard
+        key={hit.objectID}
+        productName={hit.name}
+        productImage={hit.image}
+        productPrice={hit.price}
+        productStore={hit.store_name}
+        productData={hit}
+      />
+    ))}
+  </div>
+));
 
+const ProductListPage = () => {
   const [indexName, setIndexName] = useState('mobile_device1');
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
@@ -80,6 +73,7 @@ const ProductListPage = () => {
         />
 
         <div style={{ display: 'flex', gap: '20px' }}>
+          {/* Sidebar */}
           <div className="sidebar">
             <h3>Filters</h3>
             <RefinementList attribute="brand" />
@@ -110,9 +104,8 @@ const ProductListPage = () => {
             <ToggleRefinement attribute="stock" label="In Stock Only" />
           </div>
 
+          {/* Main Product Area */}
           <div style={{ flex: 1 }}>
-            <SearchBox translations={{ placeholder: 'Search products...' }} />
-
             <select
               value={indexName}
               onChange={(e) => setIndexName(e.target.value)}
@@ -123,9 +116,14 @@ const ProductListPage = () => {
               <option value="mobile_device1_price_desc">Price High to Low</option>
             </select>
 
-            <div className="product-grid">
-              <Hits hitComponent={ProductCardAlgolia} />
+            {/* 🔻 Ad/Promo Placeholder like Amazon */}
+            <div className="ad-placeholder">
+              📢 <strong>Sponsored:</strong> Great Summer Sale – Grab Offers Now!
             </div>
+
+            {/* ✅ Fixed Grid */}
+            <CustomHits />
+			
           </div>
         </div>
       </InstantSearch>

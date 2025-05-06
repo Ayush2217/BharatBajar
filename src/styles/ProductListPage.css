@@ -32,7 +32,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 20px;
-  width: 100%;
 }
 
 .product-card {
@@ -114,12 +113,7 @@ button:hover {
   font-size: 14px;
 }
 
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
-  width: 100%;
-}
+
 
 .top-controls {
   display: flex;
@@ -143,3 +137,18 @@ button:hover {
 .product-card-wrapper {
   width: 100%;
 }
+.product-list-page {
+  padding-top: 80px; /* Adjust to match the fixed header height */
+}
+.ad-placeholder {
+  background-color: #fff4c2;
+  border: 1px dashed #f0ad4e;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #444;
+}
+
