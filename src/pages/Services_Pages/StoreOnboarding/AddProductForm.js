@@ -5,7 +5,7 @@ import ProductCatalog from './ProductCatalog';
 const AddProductForm = ({ listedProducts, setListedProducts }) => {
   const [categories, setCategories] = useState([]);
   const [activeCategory, setActiveCategory] = useState('');
-  const [selectedSubcategory, setSelectedSubcategory] = useState(null); // used to toggle catalog view
+  const [selectedSubcategory, setSelectedSubcategory] = useState(null);
 
   useEffect(() => {
     axios.get('http://127.0.0.1:8000/api/categories/')
@@ -27,61 +27,51 @@ const AddProductForm = ({ listedProducts, setListedProducts }) => {
     }
   };
 
-  const handleBackToSubcategories = () => {
-    setSelectedSubcategory(null); // back to subcategory list
-  };
-
   return (
     <div style={{ padding: '20px' }}>
-      {selectedSubcategory ? (
-        <ProductCatalog
-          subcategory={selectedSubcategory}
-          onBack={handleBackToSubcategories}
-          onAddToStore={(product) => {
-            setListedProducts((prev) => [...prev, product]);
-            alert(`${product.name} added to your store.`);
-          }}
-        />
-      ) : (
-        <>
-          <h2>Select a Category</h2>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-            {categories.map((cat) => (
-              <button
-                key={cat.title}
-                onClick={() => setActiveCategory(cat.title)}
-                style={{
-                  padding: '10px 15px',
-                  background: activeCategory === cat.title ? '#007bff' : '#eee',
-                  color: activeCategory === cat.title ? '#fff' : '#000',
-                  borderRadius: '5px',
-                  cursor: 'pointer'
-                }}
-              >
-                {cat.title}
-              </button>
-            ))}
-          </div>
+      <h2>Select a Category</h2>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+        {categories.map((cat) => (
+          <button
+            key={cat.title}
+            onClick={() => setActiveCategory(cat.title)}
+            style={{
+              padding: '10px 15px',
+              background: activeCategory === cat.title ? '#007bff' : '#eee',
+              color: activeCategory === cat.title ? '#fff' : '#000',
+              borderRadius: '5px',
+              cursor: 'pointer'
+            }}
+          >
+            {cat.title}
+          </button>
+        ))}
+      </div>
 
-          <h3>Subcategories</h3>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: 10 }}>
-            {categories.find(c => c.title === activeCategory)?.subcategories?.map((sub) => (
-              <button
-                key={sub}
-                onClick={() => handleSubcategoryClick(sub)}
-                style={{
-                  padding: '8px 12px',
-                  background: '#f0f0f0',
-                  border: '1px solid #ccc',
-                  borderRadius: '5px',
-                  cursor: 'pointer'
-                }}
-              >
-                {sub}
-              </button>
-            ))}
-          </div>
-        </>
+      <h3 style={{ marginTop: '20px' }}>Subcategories</h3>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: 10 }}>
+        {categories.find(c => c.title === activeCategory)?.subcategories?.map((sub) => (
+          <button
+            key={sub}
+            onClick={() => handleSubcategoryClick(sub)}
+            className={`subcategory-btn ${selectedSubcategory?.name === sub ? 'active' : ''}`}
+          >
+            {sub}
+          </button>
+        ))}
+      </div>
+
+      {selectedSubcategory && (
+        <div style={{ marginTop: '30px' }}>
+          <ProductCatalog
+            subcategory={selectedSubcategory}
+            onBack={null} // not needed now
+            onAddToStore={(product) => {
+              setListedProducts((prev) => [...prev, product]);
+              alert(`${product.name} added to your store.`);
+            }}
+          />
+        </div>
       )}
     </div>
   );

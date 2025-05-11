@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import algoliasearch from 'algoliasearch/lite';
+import { liteClient } from 'algoliasearch/lite';
 import {
   InstantSearch,
   SearchBox,
@@ -15,7 +15,7 @@ import { useCart } from '../../contexts/CartContext';
 import { useNavigate } from 'react-router-dom';
 import ProductCard from '../../components/Common/ProductCard';
 
-const searchClient = algoliasearch('8MRLOZ7A26', '489c1269a1685a0990ecf6569113b29c');
+const searchClient = liteClient('8MRLOZ7A26', '489c1269a1685a0990ecf6569113b29c');
 
 const FIXED_CATEGORY = "Mobile Devices & Accessories";
 const FIXED_SUBCATEGORY = "Smart Watches";

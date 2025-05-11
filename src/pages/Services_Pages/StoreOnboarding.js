@@ -30,7 +30,12 @@ const StoreOnboarding = () => {
         return (
           <div>
             <h2>Store Onboarding</h2>
-            <StoreOnboardingForm onComplete={() => setOnboardingComplete(true)} />
+            <StoreOnboardingForm
+              onComplete={() => {
+                setOnboardingComplete(true);          // ✅ unlocks the tab
+                setActiveTab('addProducts');          // ✅ switches to "Add Products" tab
+              }}
+            />
           </div>
         );
 

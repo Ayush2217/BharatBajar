@@ -35,10 +35,10 @@ const SalesPage = () => {
         const fetchData = async () => {
             try {
                 const [categoriesResponse, dealsResponse, engagementResponse, personalizedResponse] = await Promise.all([
-					axios.get('http://192.168.0.141:8000/api/categories/'),
-					axios.get('http://192.168.0.141:8000/api/deals/'),
-					axios.get('http://192.168.0.141:8000/api/engagement-items/'),
-					axios.get('http://192.168.0.141:8000/api/personalized-items/'),
+					axios.get('http://localhost:8000/api/categories/'),
+					axios.get('http://localhost:8000/api/deals/'),
+					axios.get('http://localhost:8000/api/engagement-items/'),
+					axios.get('http://localhost:8000/api/personalized-items/'),
 				]);
 
 

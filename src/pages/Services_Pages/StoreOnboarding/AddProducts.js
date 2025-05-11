@@ -13,7 +13,7 @@ const AddProducts = () => {
     const [showManualModal, setShowManualModal] = useState(false);
 
     useEffect(() => {
-        axios.get('http://192.168.0.141:8000/api/categories/')
+        axios.get('http://localhost:8000/api/categories/')
             .then(res => setCategories(res.data.categories || []))
             .catch(err => console.error("Error fetching categories:", err));
     }, []);
@@ -21,7 +21,7 @@ const AddProducts = () => {
     const handleSubcategoryClick = async (subcategoryName) => {
         setSelectedSubcategory(subcategoryName);
         try {
-            const res = await axios.get(`http://127.0.0.1:8000/api/products/${subcategoryName}/`);
+            const res = await axios.get(`http://localhost:8000/api/products/${subcategoryName}/`);
             setProducts(res.data.products || []);
         } catch (err) {
             console.error(`Error fetching products for ${subcategoryName}:`, err);

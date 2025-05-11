@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import algoliasearch from "algoliasearch/lite";
+import { liteClient } from 'algoliasearch/lite';
 import instantsearch from "instantsearch.js";
 import { searchBox, hits, configure } from "instantsearch.js/es/widgets";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +13,7 @@ const AlgoliaSearchBar = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const searchClient = algoliasearch(
+        const searchClient = liteClient(
             "8MRLOZ7A26", // Your Algolia App ID
             "489c1269a1685a0990ecf6569113b29c" // Your Algolia API Key
         );

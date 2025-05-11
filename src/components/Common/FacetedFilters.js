@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import algoliasearch from "algoliasearch";
+import { algoliasearch } from 'algoliasearch';
 import instantsearch from "instantsearch.js";
 import { refinementList, rangeSlider, menuSelect, clearRefinements } from "instantsearch.js/es/widgets";
 import "instantsearch.css/themes/reset.css";

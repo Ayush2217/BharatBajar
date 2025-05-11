@@ -1,4 +1,4 @@
-import algoliasearch from "algoliasearch";
+import { algoliasearch } from 'algoliasearch';
 
 const searchClient = algoliasearch(
             "8MRLOZ7A26", // Your Algolia App ID
